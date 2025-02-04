@@ -49,7 +49,7 @@ docker compose up
 3. If you want to drop the schema you can use `drop-schema.sh` that will use script located in `drop-schema.sql`
 
 ```shell
-./drop-schema.sql
+./drop-schema.sh
 ```
 
 ## Running the server
