@@ -35,7 +35,7 @@ volumes:
 1. Start mysql service using docker-compose
 
 ```shell
-docker compose up
+docker compose up -d
 ```
 
 2. Create database schema and initial data with `create-schema.sh`
@@ -72,12 +72,6 @@ Integration Test
 
 ```shell
 ./mvnw failsafe:integration-test
-```
-
-Complete Test Suite
-
-```shell
-./mvnw verify
 ```
 
 ## Example API Request/Response
