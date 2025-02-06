@@ -22,9 +22,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book add(AddBookRequest book) {
         Book newBook = Book.builder()
-                .title(book.getTitle())
-                .author(book.getAuthor())
-                .publishedDate(LocalDate.from(book.getPublishedDate()))
+                .title(book.title())
+                .author(book.author())
+                .publishedDate(LocalDate.from(book.publishedDate()))
                 .build();
 
         return bookRepository.save(newBook);

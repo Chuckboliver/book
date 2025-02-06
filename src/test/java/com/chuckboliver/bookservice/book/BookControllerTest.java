@@ -13,9 +13,9 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
@@ -43,7 +43,7 @@ class BookControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @MockBean
+    @MockitoBean
     private BookService bookService;
 
     @Nested
@@ -176,7 +176,7 @@ class BookControllerTest {
                     .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                     .andExpect(jsonPath("$.fieldErrors").isNotEmpty())
                     .andExpect(jsonPath("$.fieldErrors[0].field").value("title"))
-                    .andExpect(jsonPath("$.fieldErrors[0].rejectedValue").value(addBookRequest.getTitle()))
+                    .andExpect(jsonPath("$.fieldErrors[0].rejectedValue").value(addBookRequest.title()))
                     .andExpect(jsonPath("$.fieldErrors[0].message").value("title must not be empty"));
 
             verifyNoInteractions(bookService);
@@ -195,7 +195,7 @@ class BookControllerTest {
                     .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                     .andExpect(jsonPath("$.fieldErrors").isNotEmpty())
                     .andExpect(jsonPath("$.fieldErrors[0].field").value("author"))
-                    .andExpect(jsonPath("$.fieldErrors[0].rejectedValue").value(addBookRequest.getAuthor()))
+                    .andExpect(jsonPath("$.fieldErrors[0].rejectedValue").value(addBookRequest.author()))
                     .andExpect(jsonPath("$.fieldErrors[0].message").value("author must not be empty"));
 
             verifyNoInteractions(bookService);

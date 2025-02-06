@@ -40,7 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("it")
 @AutoConfigureMockMvc
 class BookControllerIT {
-
+    
     @Autowired
     private MockMvc mockMvc;
 
@@ -115,13 +115,13 @@ class BookControllerIT {
             BookDto response = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), BookDto.class);
 
             Book expectedBook = Book.builder()
-                    .id(response.getId())
+                    .id(response.id())
                     .title("Animal1")
                     .author("Sam")
                     .publishedDate(LocalDate.of(2001, 1, 1))
                     .build();
 
-            Optional<Book> optionalBook = bookRepository.findById(response.getId());
+            Optional<Book> optionalBook = bookRepository.findById(response.id());
             assertThat(optionalBook)
                     .get()
                     .usingRecursiveComparison()
