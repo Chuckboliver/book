@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- JDK 1.8
+- JDK 23
 - Docker
 
 ## Setup MySQL Database via docker-compose
