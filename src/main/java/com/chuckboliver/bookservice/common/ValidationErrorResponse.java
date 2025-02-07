@@ -1,18 +1,9 @@
 package com.chuckboliver.bookservice.common;
 
-import lombok.Value;
-
 import java.util.List;
 
-@Value
-public class ValidationErrorResponse {
+public record ValidationErrorResponse(List<ErrorDetail> fieldErrors) {
 
-    List<ErrorDetail> fieldErrors;
-
-    @Value
-    public static class ErrorDetail {
-        String field;
-        Object rejectedValue;
-        String message;
+    public record ErrorDetail(String field, Object rejectedValue, String message) {
     }
 }
